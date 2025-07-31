@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Be a User</title>
+  <style>
+    body {
+      background: #9ca0c1;
+      color: #222;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+    a {
+      margin-top: 20px;
+      color: #333;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome, User!</h1>
+  <p>This is your user homepage (Coming Soon).</p>
+  <a href="start.html">← Back to Home</a>
+  <script>
+  const user = JSON.parse(localStorage.getItem("loggedInUser"));
+  if (!user || user.role !== "user") {
+    window.location.href = "home.html"; // Not allowed
+  }
+  <button onclick="logout()">Logout</button>
+
+  function logout() {
+    localStorage.removeItem("loggedInUser");
+    localStorage.removeItem("selectedRole");
+    window.location.href = "home.html";
+  }
+
+</script>
+
+</body>
+</html>

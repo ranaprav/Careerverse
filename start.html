@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CareerVerse</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      display: flex;
+      height: 100vh;
+    }
+
+    .left {
+      flex: 1;
+      background: linear-gradient(135deg, #0044cc, #0077ff);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .left h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .left p {
+      font-size: 1.2rem;
+    }
+
+    .right {
+      flex: 1;
+      background: linear-gradient(to right, #6ec6ff, #81d4fa);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-box {
+      width: 80%;
+      max-width: 400px;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 2rem;
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      text-align: center;
+    }
+
+    .form-box h2 {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .role-buttons {
+      margin: 1rem 0;
+    }
+
+    .role-buttons button {
+      margin: 0 10px;
+      padding: 10px 20px;
+      font-weight: bold;
+      border: none;
+      border-radius: 20px;
+      background-color: #0044cc;
+      color: white;
+      cursor: pointer;
+    }
+
+    .role-buttons button.active {
+      background-color: #002288;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+    }
+
+    #createBtn {
+      width: 100%;
+      padding: 12px;
+      background-color: #0044cc;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .footer {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: white;
+    }
+
+    .footer a {
+      color: white;
+      margin: 0 5px;
+      text-decoration: none;
+    }
+
+    #roleDisplay {
+      margin-top: 10px;
+      color: #333;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="left">
+    <h1>Welcome</h1>
+    <p>The Social Media for GEN-Z</p>
+  </div>
+
+  <div class="right">
+    <div class="form-box">
+      <h2>CAREERVERSE</h2>
+      <p>Select Your Role</p>
+
+      <div class="role-buttons">
+        <button id="creatorBtn">Creator</button>
+        <button id="userBtn">User</button>
+      </div>
+
+      <form id="signupForm">
+        <input type="text" id="username" placeholder="Username" required />
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <button type="submit" id="createBtn">Create Account</button>
+      </form>
+
+      <p id="roleDisplay">You are signing up as a CREATOR</p>
+    </div>
+
+    <div class="footer">
+      <a href="#">Hindi</a> | 
+      <a href="#">English</a> |
+      <a href="#">Privacy Policy</a> |
+      <a href="#">Terms of Service</a>
+    </div>
+  </div>
+
+  <script>
+    let role = "creator";
+
+    const creatorBtn = document.getElementById("creatorBtn");
+    const userBtn = document.getElementById("userBtn");
+    const roleDisplay = document.getElementById("roleDisplay");
+    const signupForm = document.getElementById("signupForm");
+
+    creatorBtn.onclick = () => {
+      role = "creator";
+      creatorBtn.classList.add("active");
+      userBtn.classList.remove("active");
+      roleDisplay.textContent = "You are signing up as a CREATOR";
+    };
+
+    userBtn.onclick = () => {
+      role = "user";
+      userBtn.classList.add("active");
+      creatorBtn.classList.remove("active");
+      roleDisplay.textContent = "You are signing up as a USER";
+    };
+
+    signupForm.onsubmit = function (e) {
+      e.preventDefault();
+      const username = document.getElementById("username").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      // Save to localStorage or perform backend call here
+
+      // Redirect
+      if (role === "creator") {
+        window.location.href = "home.html";
+      } else {
+        window.location.href = "home.html";
+      }
+    };
+  </script>
+</body>
+</html>

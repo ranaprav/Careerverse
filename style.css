@@ -1,0 +1,85 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #181818;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+header {
+  background: #202020;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav a {
+  color: #fff;
+  margin-left: 15px;
+  text-decoration: none;
+}
+main#video-feed {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+.video-card {
+  background: #282828;
+  border-radius: 8px;
+  width: 300px;
+  padding: 10px;
+}
+.video-card video {
+  width: 100%;
+  border-radius: 8px;
+}
+.page-layout {
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - 72px); /* assuming topbar height */
+}
+
+/* 80% main content */
+.content-section {
+  flex: 4;
+  padding: 20px;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* 20% right sidebar */
+.info-section {
+  flex: 1;
+  padding: 20px;
+  background-color: #1b1b1b;
+  border-left: 1px solid #2a2a2a;
+  overflow-y: auto;
+}
+
+.info-section .section {
+  margin-bottom: 30px;
+}
+
+.info-section h3 {
+  font-size: 16px;
+  color: #00bfa6;
+  margin-bottom: 10px;
+}
+
+.info-section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.info-section ul li {
+  font-size: 14px;
+  color: #ddd;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.info-section ul li:hover {
+  color: #00bfa6;
+  text-decoration: underline;
+}

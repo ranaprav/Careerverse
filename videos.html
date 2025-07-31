@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CareerVerse - Videos</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter&display=swap"/>
+  <style>
+    body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #121212;
+  color: #f5f5f5;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: #1e1e1e;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-right: 1px solid #2a2a2a;
+  box-sizing: border-box;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #00bfa6;
+  margin-bottom: 40px;
+}
+
+.nav a {
+  display: block;
+  color: #ddd;
+  text-decoration: none;
+  padding: 12px 0;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+.nav a:hover,
+.nav a.active {
+  color: #00bfa6;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1a1a1a;
+  padding: 16px 24px;
+  border-bottom: 1px solid #333;
+}
+
+.topbar input {
+  padding: 8px 16px;
+  width: 50%;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  background-color: #2a2a2a;
+  color: #fff;
+}
+
+.top-icons span {
+  margin-left: 20px;
+.videos-grid {
+  flex: 3;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  overflow-y: auto;
+}
+
+.video-card {
+  background-color: #1f1f1f;
+  padding: 10px;
+  border-radius: 10px;
+  transition: transform 0.2s;
+}
+
+.video-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.video-card h3 {
+  font-size: 16px;
+  margin: 10px 0 5px;
+  color: #fff;
+}
+
+.video-card p {
+  font-size: 14px;
+  color: #aaa;
+}
+
+.video-card:hover {
+  transform: scale(1.02);
+}
+
+/* Removed duplicate .sidebar definition; merged into single definition above */
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #00bfa6;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+}
+
+.nav {
+  width: 100%;
+}
+
+.nav a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 15px;
+  color: #aaa;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.nav a:hover {
+  background-color: #2c2c2c;
+  color: #fff;
+}
+
+.nav a.active {
+  background-color: #00bfa610;
+  color: #00bfa6;
+  font-weight: 600;
+  border-left: 4px solid #00bfa6;
+  padding-left: 12px;
+}
+
+/* Wrapper for center video grid + right sidebar */
+.content-wrapper {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  height: calc(100vh - 72px); /* Adjust for topbar height */
+}
+
+/* Main video grid area */
+.videos-grid {
+  flex: 3;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+/* (Merged into the earlier .videos-grid definition. This duplicate should be removed.) */
+  min-width: 250px;
+  max-width: 300px;
+  background-color: #1b1b1b;
+  padding: 20px;
+  border-left: 1px solid #2a2a2a;
+  overflow-y: auto;
+}
+
+.right-sidebar .section {
+  margin-bottom: 30px;
+}
+
+.right-sidebar h4 {
+  font-size: 16px;
+  color: #00bfa6;
+  margin-bottom: 10px;
+}
+
+.right-sidebar ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.right-sidebar ul li {
+  font-size: 14px;
+  color: #ddd;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.right-sidebar ul li:hover {
+  color: #00bfa6;
+  text-decoration: underline;
+}
+.page-layout {
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - 72px); /* assuming topbar height */
+}
+
+/* 80% main content */
+.content-section {
+  flex: 4;
+  padding: 20px;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* 20% right sidebar */
+.info-section {
+  flex: 1;
+  padding: 20px;
+  background-color: #1b1b1b;
+  border-left: 1px solid #2a2a2a;
+  overflow-y: auto;
+}
+
+.info-section .section {
+  margin-bottom: 30px;
+}
+
+.info-section h3 {
+  font-size: 16px;
+  color: #00bfa6;
+  margin-bottom: 10px;
+}
+
+.info-section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.info-section ul li {
+  font-size: 14px;
+  color: #ddd;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.info-section ul li:hover {
+  color: #00bfa6;
+  text-decoration: underline;
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="logo">CareerVerse</div>
+      <nav class="nav">
+        <a href="home.html">🏠 Home</a>
+        <a class="active" href="videos.html">🎥 Videos</a>
+        <a href="connection.html">💼 Connection</a>
+        <a href="chatai.html">📚 ChatAI</a>
+        <a href="social.html">🗣️ Social</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <input type="text" placeholder="Search videos..." />
+        <div class="top-icons">
+          <span>🔔</span>
+          <span>👤</span>
+        </div>
+      </header>
+    <div class="page-layout">
+      
+    <div class="content-wrapper">
+      <section class="videos-grid">
+        <!-- Video Cards -->
+        <div class="video-card">
+          <img src="https://placehold.co/300x180?text=Product+Manager" alt="Video Thumbnail" />
+          <h3>How to Become a Product Manager</h3>
+          <p>Raj Shamani • 1.2M views</p>
+        </div>
+
+        <div class="video-card">
+          <img src="https://placehold.co/300x180?text=Top+Tech+Jobs" alt="Video Thumbnail" />
+          <h3>Top Tech Jobs in 2025</h3>
+          <p>Tech Insider • 540K views</p>
+        </div>
+
+        <div class="video-card">
+          <img src="https://placehold.co/300x180?text=UI%2FUX+Design" alt="Video Thumbnail" />
+          <h3>Career in UI/UX Design</h3>
+          <p>Career Talk • 300K views</p>
+        </div>
+
+        <div class="video-card">
+          <img src="https://placehold.co/300x180?text=Full+Stack+Dev" alt="Video Thumbnail" />
+          <h3>Full Stack Developer Roadmap</h3>
+          <p>Dev Path • 820K views</p>
+        </div>
+
+        <div class="video-card">
+          <img src="https://placehold.co/300x180?text=Freelancing+Tips" alt="Video Thumbnail" />
+          <h3>Top Freelancing Skills in 2025</h3>
+          <p>UpSkillNow • 400K views</p>
+        </div>
+
+        <div class="video-card">
+          <img src="https://placehold.co/300x180?text=AI+Engineer" alt="Video Thumbnail" />
+          <h3>AI Engineer Career Path</h3>
+          <p>FutureTech • 780K views</p>
+        </div>
+
+        <div class="video-card">
+          <img src="https://placehold.co/300x180?text=Remote+Jobs" alt="Video Thumbnail" />
+          <h3>Best Remote Jobs for Students</h3>
+          <p>RemoteGo • 350K views</p>
+        </div>
+
+        <div class="video-card">
+          <img src="https://placehold.co/300x180?text=Content+Creator" alt="Video Thumbnail" />
+          <h3>How to Start as a Content Creator</h3>
+          <p>CreativeLife • 220K views</p>
+        </div>
+
+        <div class="video-card">
+          <img src="https://placehold.co/300x180?text=Data+Science" alt="Video Thumbnail" />
+          <h3>Data Science for Beginners</h3>
+          <p>DataLab • 1M views</p>
+        </div>
+        <div class="video-card">
+      <img src="https://placehold.co/300x180?text=AI+Career" />
+      <h3>AI Career Path in 2025</h3>
+      <p>FutureTech • 850K views</p>
+    </div>
+
+    <div class="video-card">
+      <img src="https://placehold.co/300x180?text=Full+Stack+Roadmap" />
+      <h3>Full Stack Developer Roadmap</h3>
+      <p>CodeBuddy • 1.1M views</p>
+    </div>
+
+    <div class="video-card">
+      <img src="https://placehold.co/300x180?text=Freelance+Earnings" />
+      <h3>Top Freelancing Platforms</h3>
+      <p>UpSkillNow • 670K views</p>
+    </div>
+
+    <div class="video-card">
+      <img src="https://placehold.co/300x180?text=Remote+Work" />
+      <h3>Remote Work Opportunities</h3>
+      <p>NomadLife • 920K views</p>
+    </div>
+
+    <div class="video-card">
+      <img src="https://placehold.co/300x180?text=UI+UX+Bootcamp" />
+      <h3>UI/UX Design from Scratch</h3>
+      <p>DesignDaily • 480K views</p>
+    </div>
+
+    <div class="video-card">
+      <img src="https://placehold.co/300x180?text=DSA+Crack" />
+      <h3>Crack DSA Interviews</h3>
+      <p>AlgoPro • 1.5M views</p>
+    </div>
+
+    <div class="video-card">
+      <img src="https://placehold.co/300x180?text=Marketing+Strategy" />
+      <h3>Digital Marketing Strategy</h3>
+      <p>BizMaster • 410K views</p>
+    </div>
+
+    <div class="video-card">
+      <img src="https://placehold.co/300x180?text=Web3+Jobs" />
+      <h3>Top Web3 Job Roles</h3>
+      <p>ChainCrafters • 510K views</p>
+    </div>
+
+    <div class="video-card">
+      <img src="https://placehold.co/300x180?text=Startup+Tips" />
+      <h3>Start Your Own Tech Company</h3>
+      <p>FoundersClub • 600K views</p>
+    </div>
+
+    <div class="video-card">
+      <img src="https://placehold.co/300x180?text=Resume+Tips" />
+      <h3>Create a Job-Winning Resume</h3>
+      <p>CareerCoach • 780K views</p>
+    </div>
+
+    <div class="video-card">
+      <img src="https://placehold.co/300x180?text=JavaScript+Mastery" />
+      <h3>Master JavaScript in 30 Days</h3>
+      <p>CodeVerse • 990K views</p>
+    </div>
+
+    <div class="video-card">
+      <img src="https://placehold.co/300x180?text=Python+Projects" />
+      <h3>10 Python Projects for Your Portfolio</h3>
+      <p>PythonDaily • 820K views</p>
+    </div>
+  </div>
+      </section>
+      <aside class="info-section">
+    <div class="section">
+      <h4>🔥 Trending Videos</h4>
+      <ul>
+        <li>Career in Cloud Computing</li>
+        <li>Best Coding Languages to Learn</li>
+        <li>Remote Jobs That Pay Well</li>
+        <li>AI Tools for Job Seekers</li>
+        <li>Portfolio Building Hacks</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h4>✨ Creators You Might Like</h4>
+      <ul>
+        <li>Raj Shamani</li>
+        <li>TechWithTim</li>
+        <li>Hustle Academy</li>
+        <li>Kunal Kushwaha</li>
+        <li>Neha Sharma (HR Coach)</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h4>📚 Related Courses</h4>
+      <ul>
+        <li>Intro to AI & ML</li>
+        <li>Freelance Like a Pro</li>
+        <li>Full Stack Web Bootcamp</li>
+        <li>UI/UX Design Crash Course</li>
+        <li>Career Strategy Masterclass</li>
+      </ul>
+    </div>
+  </aside>
+  </div>
+    </main>
+  </div>
+</body>
+</html>

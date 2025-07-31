@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Be a Creator</title>
+  <style>
+    body {
+      background: #4a3b68;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+    a {
+      margin-top: 20px;
+      color: #ccc;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome, Creator!</h1>
+  <p>This is your dedicated creator dashboard (Coming Soon).</p>
+<a href="start.html">← Back to Home</a>
+<button onclick="logout()">Logout</button>
+<script>
+  const user = JSON.parse(localStorage.getItem("loggedInUser"));
+  if (!user || user.role !== "creator") {
+    window.location.href = "home.html"; // Not allowed
+  }
+  function logout() {
+    localStorage.removeItem("loggedInUser");
+    localStorage.removeItem("selectedRole");
+    window.location.href = "home.html";
+  }
+</script>
+
+</body>
+</html>

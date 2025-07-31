@@ -1,0 +1,459 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Careerverse Tube</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Careerverse</h1>
+    <nav>
+      <a href="start.html">Sign Up / Login</a>
+      <a href="upload.html">Upload</a>
+    </nav>
+  </header>
+  <main id="video-feed">
+     Videos will be loaded here by JS 
+  </main>
+  <script src="script.js"></script>
+</body>
+</html> -->
+<!-- index.html -->
+<!-- index.html -->
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CareerVerse Home</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .container {
+      display: flex;
+      width: 100%;
+    }
+    .sidebar {
+      width: 220px;
+      background-color: #111;
+      color: white;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+    }
+    .sidebar.hide {
+      transform: translateX(-100%);
+    }
+    .toggle-button {
+      background: #111;
+      color: white;
+      padding: 10px;
+      cursor: pointer;
+      border: none;
+      font-size: 16px;
+    }
+    .sidebar h2 {
+      color: #fff;
+      margin-bottom: 30px;
+    }
+    .nav-menu li {
+      list-style: none;
+      margin-bottom: 15px;
+    }
+    .nav-menu a {
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+    .nav-menu span {
+      margin-right: 10px;
+    }
+    .sidebar-footer a {
+      color: #bbb;
+      margin-right: 10px;
+      font-size: 12px;
+    }
+    .main {
+      flex-grow: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .search-input {
+      padding: 8px;
+      width: 60%;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    .icons span {
+      font-size: 18px;
+      margin-left: 15px;
+      cursor: pointer;
+    }
+    .section-title {
+      margin-bottom: 10px;
+    }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 15px;
+    }
+    .video-card {
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .video-card:hover {
+      transform: scale(1.05);
+      background-color: #e6e6e6;
+    }
+    .video-thumbnail {
+      font-size: 40px;
+    }
+    .jobs-sidebar {
+      width: 300px;
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .job-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #555;
+    }
+    .job-item img {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+    }
+    .job-info {
+      flex-grow: 1;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 5px;
+      border-radius: 4px;
+    }
+    .easy-apply {
+      background: #4CAF50;
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .job-info strong,
+    .job-info br,
+    .job-info small {
+      color: black;
+    }
+.job-opportunities {
+  background: linear-gradient(135deg, #e3f2fd 40%, #bbdefb 100%);
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+  padding: 15px;
+  height: 420px; /* Fixed height for scrolling */
+  overflow-y: auto;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.job-opportunities h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+.job-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.job-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 8px 10px;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+  transition: transform 0.2s;
+}
+.job-card:hover {
+  transform: translateY(-2px);
+}
+
+
+.job-card img {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  object-fit: contain;
+  margin-right: 15px;
+}
+
+.job-card h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #222;
+  text-align: left;
+}
+
+.job-card p {
+  margin: 2px 0 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.apply-btn {
+  margin-left: auto;
+  background-color: #2196f3;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 15px;
+  transition: background-color 0.2s;
+}
+
+.apply-btn:hover {
+  background-color: #0056b3;
+}
+#toggle-job-btn {
+  background-color: #2196f3;
+  color: white;
+  padding: 8px 16px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.job-opportunities {
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 15px;
+  background: linear-gradient(135deg, #e3f2fd 40%, #bbdefb 100%);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.hidden {
+  display: none;
+}
+
+
+  </style>
+</head>
+<body>
+  <button class="toggle-button" onclick="toggleSidebar()">☰ Menu</button>
+  <div class="container">
+    <!-- Sidebar Navigation -->
+    <div class="sidebar" id="sidebar">
+      <div>
+        <h2>▶ CAREERVERSE</h2>
+        <ul class="nav-menu">
+          <li><a href="home.html"><span>🏠</span> Home</a></li>
+          <li><a href="videos.html"><span>📹</span> Videos</a></li>
+          <li><a href="connection.html"><span>🌐</span> Connection</a></li>
+          <li><a href="chatai.html"><span>🤖</span> ChatAI</a></li>
+          <li><a href="social.html"><span>🖼️</span> Social</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-footer">
+        <p><a href="#">About</a> <a href="#">Press</a> <a href="#">Copyrights</a></p>
+        <p><a href="#">Contact us</a> <a href="#">Advertise</a></p>
+        <p><a href="#">Terms</a> <a href="#">Privacy</a> <a href="#">Policy and Safety</a></p>
+      </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main">
+      <!-- Search and Topbar -->
+      <div class="topbar">
+        <input type="text" placeholder="Search" class="search-input" />
+        <div class="icons">
+          <span title="Search by Voice">🎤</span>
+          <span title="Notifications">📩</span>
+        </div>
+      </div>
+
+      <!-- Home Feeds -->
+      <h2 class="section-title">Home Feeds</h2>
+      <div class="video-grid">
+        <div class="video-card" onclick="window.location.href='video1.html'">
+          <div class="video-thumbnail">▶</div>
+          <p>Building Your Career in Tech</p>
+        </div>
+        <div class="video-card" onclick="window.location.href='video2.html'">
+          <div class="video-thumbnail">▶</div>
+          <p>From College to Startups</p>
+        </div>
+        <div class="video-card" onclick="window.location.href='video3.html'">
+          <div class="video-thumbnail">▶</div>
+          <p>Best Job Hunting Tips</p>
+        </div>
+        <div class="video-card" onclick="window.location.href='video4.html'">
+          <div class="video-thumbnail">▶</div>
+          <p>How to Become a Creator</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Job Sidebar -->
+    <!--<div class="jobs-sidebar">
+      <h3>Job Opportunities</h3>
+      <p>Top jobs based on your skills</p>
+      <ul>
+        <li class="job-item" onclick="window.location.href='job1.html'"><img src="logos/figureout.png" alt="Figure Out" /><div class="job-info"><strong>Video Editor</strong><br />Figure Out (Raj Shamani)<br /><small>India (Remote)</small></div><span class="easy-apply">Easy Apply</span></li>
+        <li class="job-item" onclick="window.location.href='job2.html'"><img src="logos/amazon.png" alt="Amazon" /><div class="job-info"><strong>Software Engineer</strong><br />Amazon India<br /><small>India</small></div><span class="easy-apply">Easy Apply</span></li>
+        <li class="job-item" onclick="window.location.href='job3.html'"><img src="logos/deloitte.png" alt="Deloitte" /><div class="job-info"><strong>Data Analyst</strong><br />Deloitte<br /><small>Gurugram</small></div><span class="easy-apply">Easy Apply</span></li>
+        <li class="job-item" onclick="window.location.href='job4.html'"><img src="logos/flipkart.png" alt="Flipkart" /><div class="job-info"><strong>UI/UX Designer</strong><br />Flipkart<br /><small>Bangalore</small></div><span class="easy-apply">Easy Apply</span></li>
+        <li class="job-item" onclick="window.location.href='job5.html'"><img src="logos/openai.png" alt="OpenAI" /><div class="job-info"><strong>AI Prompt Engineer</strong><br />OpenAI Partnered Startups<br /><small>Remote</small></div><span class="easy-apply">Easy Apply</span></li>
+        <li class="job-item" onclick="window.location.href='job6.html'"><img src="logos/google.png" alt="Google" /><div class="job-info"><strong>Cloud DevOps Engineer</strong><br />Google Cloud<br /><small>Hyderabad</small></div><span class="easy-apply">Easy Apply</span></li>
+        <li class="job-item" onclick="window.location.href='job7.html'"><img src="logos/tcs.png" alt="TCS" /><div class="job-info"><strong>Cybersecurity Analyst</strong><br />TCS<br /><small>Mumbai</small></div><span class="easy-apply">Easy Apply</span></li>
+        <li class="job-item" onclick="window.location.href='job8.html'"><img src="logos/zomato.png" alt="Zomato" /><div class="job-info"><strong>Product Manager</strong><br />Zomato<br /><small>Gurugram</small></div><span class="easy-apply">Easy Apply</span></li>
+      </ul>
+    </div>-->
+    <div class="job-opportunities">
+    <button onclick="toggleJobs()" id="toggle-job-btn">Show Jobs</button>
+    <div id="job-section" class="job-opportunities hidden">
+  <h2>Job Opportunities</h2>
+  <div class="job-list">
+    <div class="job-card">
+      <img src="https://logo.clearbit.com/google.com" alt="Google">
+      <div>
+        <h4>AI Engineer</h4>
+        <p>Google</p>
+        <a href="apply.html" class="apply-btn">Easy Apply</a>
+      </div>
+    </div>
+    <div class="job-card">
+      <img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft">
+      <div>
+        <h4>Cloud Architect</h4>
+        <p>Microsoft</p>
+        <a href="apply.html" class="apply-btn">Easy Apply</a>
+      </div>
+    </div>
+    <div class="job-card">
+      <img src="https://logo.clearbit.com/meta.com" alt="Meta">
+      <div>
+        <h4>Product Manager</h4>
+        <p>Meta</p>
+        <a href="apply.html" class="apply-btn">Easy Apply</a>
+      </div>
+    </div>
+    <div class="job-card">
+      <img src="https://logo.clearbit.com/amazon.com" alt="Amazon">
+      <div>
+        <h4>Full Stack Developer</h4>
+        <p>Amazon</p>
+        <a href="apply.html" class="apply-btn">Easy Apply</a>
+      </div>
+    </div>
+    <div class="job-card">
+      <img src="https://logo.clearbit.com/ibm.com" alt="IBM">
+      <div>
+        <h4>Cybersecurity Analyst</h4>
+        <p>IBM</p>
+        <a href="apply.html" class="apply-btn">Easy Apply</a>
+      </div>
+    </div>
+    <!-- Add more jobs here -->
+     <div class="job-card">
+  <img src="https://cdn-icons-png.flaticon.com/512/2211/2211614.png" alt="Producer Logo" />
+  <div>
+    <h4>Podcast Producer</h4>
+    <p>WorkVerse Studios</p>
+  </div>
+  <a href="apply.html" class="apply-btn">Easy Apply</a>
+</div>
+
+<div class="job-card">
+  <img src="https://cdn-icons-png.flaticon.com/512/2920/2920244.png" alt="Videographer Logo" />
+  <div>
+    <h4>Videographer / Camera Operator</h4>
+    <p>CreatorBox Media</p>
+  </div>
+  <a href="apply.html" class="apply-btn">Easy Apply</a>
+</div>
+
+<div class="job-card">
+  <img src="https://cdn-icons-png.flaticon.com/512/4570/4570701.png" alt="Audio Engineer Logo" />
+  <div>
+    <h4>Audio Engineer (Podcast)</h4>
+    <p>SoundCraft Studios</p>
+  </div>
+  <a href="apply.html" class="apply-btn">Easy Apply</a>
+</div>
+
+<div class="job-card">
+  <img src="https://cdn-icons-png.flaticon.com/512/2989/2989988.png" alt="Content Strategist Logo" />
+  <div>
+    <h4>Content Strategist (Podcast/YouTube)</h4>
+    <p>RajX Productions</p>
+  </div>
+  <a href="apply.html" class="apply-btn">Easy Apply</a>
+</div>
+
+<div class="job-card">
+  <img src="https://cdn-icons-png.flaticon.com/512/4922/4922117.png" alt="Thumbnail Designer Logo" />
+  <div>
+    <h4>Thumbnail & Visual Designer</h4>
+    <p>CreatorSphere</p>
+  </div>
+  <a href="apply.html" class="apply-btn">Easy Apply</a>
+</div>
+<!-- Add more jobs here -->
+  </div>
+</div>
+
+  </div>
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('hide');
+    }
+  
+  function toggleJobs() {
+    const jobSection = document.getElementById("job-section");
+    const toggleBtn = document.getElementById("toggle-job-btn");
+    
+    if (jobSection.classList.contains("hidden")) {
+      jobSection.classList.remove("hidden");
+      toggleBtn.textContent = "Hide Jobs";
+    } else {
+      jobSection.classList.add("hidden");
+      toggleBtn.textContent = "Show Jobs";
+    }
+  }
+
+
+  </script>
+</body>
+</html>
